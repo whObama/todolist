@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	用户名: <input type="text" name="username" id="user">
+	年  龄: <input type="text" name="age" id="age">
+	<input type="button" value="提交" id="btn">
+	<script src="./js/jquery.min.js"></script>
+	<script>
+		$("#btn").on('click', function() {
+			$.ajax({
+				type: 'post',
+				url: 'http://localhost:3000/user',
+				data: {
+					username: $('#user').val().trim(),
+					age: $('#age').val().trim()
+				},
+				success: function (response) {
+					// response为服务器端返回的数据
+					// 方法内部会自动将json字符串转换为json对象
+					console.log(response);
+				}
+			})
+		})
+	</script>
+</body>
+</html>
